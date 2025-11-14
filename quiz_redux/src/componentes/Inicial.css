@@ -1,0 +1,44 @@
+.inicial{
+    display: flex;
+    background-color: rgb(46, 46, 46);
+}
+.imagem{
+    width: 40%;
+    height: 100vh;
+    background-image: url("../imgs/imagem.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.inicial h2{
+    margin: 1rem;
+    background-color: rgba(70, 69, 69, 0.411);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.buttonIniciar{
+    padding: 1rem;
+    width: 250px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    background-color: rgb(41, 126, 175);
+    margin: 1rem;
+}
+
+.buttonIniciar:hover{
+    background-color: rgb(55, 171, 238);
+}

@@ -1,0 +1,55 @@
+.main-div{
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    justify-content: center;
+}
+.message{
+    margin: 1rem;
+    border-bottom: 1px solid black;
+}
+.quests-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(166, 222, 255);;
+    width: 65%;
+    margin: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.quest{
+    background-color: rgb(41, 126, 175);
+    margin: 1rem;
+    padding: 1.5rem;
+    width: 60%;
+    border-radius: 0.5rem;
+
+}
+
+.quest h2 {
+    margin: 0.3rem;
+}
+
+.options{
+    margin: 0.1rem;
+    padding: 0.1rem;
+}
+
+.finish-btn{
+    padding: 0.5rem;
+    width: 200px;
+    background-color: rgb(20, 20, 150);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 450px) {
+    .quests-div{
+        width: 75%;
+    }
+    .quest{
+        width: 70%;
+    }
+}
