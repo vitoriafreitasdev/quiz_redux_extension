@@ -4,5 +4,34 @@ Content-Type: application/json
 {
     "name": "vitoria",
     "email": "v@gmail.com",
+    "password": "12345",
+    "confirmPassword": "12345"
+}
+
+###
+
+POST http://localhost:3000/login 
+Content-Type: application/json
+
+{
+    "email": "v@gmail.com",
     "password": "12345"
+}
+
+###
+
+PUT http://localhost:3000/69188d6dcd1693ed3720cfe1/scoreJs
+Content-Type: application/json
+
+{
+    "score": 50
+}
+
+###
+
+PUT http://localhost:3000/69188d6dcd1693ed3720cfe1/scorePy
+Content-Type: application/json
+
+{
+    "score": 60
 }

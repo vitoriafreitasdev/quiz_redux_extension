@@ -1,3 +1,5 @@
+
+
 const mongoose = require("mongoose")
 const {Schema} = mongoose
 
@@ -15,10 +17,36 @@ const userSchema = new Schema(
             type: String,
             require: true
         },
-        score: {
-            type: Number,
-            require: true
-        } 
+        javascriptScore: {
+            score: {
+                type: Number,
+                require: true,
+            },
+            maxScore: {
+                type: Number,
+                require: true
+            }
+        },
+        pythonScore: {
+            score: {
+                type: Number,
+                require: true,
+            },
+            maxScore: {
+                type: Number,
+                require: true
+            }
+        },
+        biggestScore: {
+            quizName: {
+                type: String,
+                require: true 
+            },
+            score: {
+                type: Number,
+                require: true 
+            }
+        }
     }
 )
 
