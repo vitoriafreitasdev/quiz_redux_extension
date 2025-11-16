@@ -1,0 +1,16 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+.home-image{
+    background-image: url("../imgs/imagem.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.home-conteudo{
+    height: 50%;
+}

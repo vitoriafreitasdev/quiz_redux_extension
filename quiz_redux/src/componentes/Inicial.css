@@ -21,9 +21,16 @@
     align-items: center;
     margin: 0 auto;
 }
+
+.conteudo div{
+    background-color: #ffffffe7;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
 .inicial h2{
     margin: 1rem;
-    background-color: rgba(70, 69, 69, 0.411);
+    background-color: rgba(165, 164, 164, 0.63);
     color: #fff;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -35,10 +42,10 @@
     cursor: pointer;
     border: none;
     color: #fff;
-    background-color: rgb(41, 126, 175);
+    background: radial-gradient(rgb(23, 201, 233), rgb(54, 191, 255), rgb(23, 167, 233));
     margin: 1rem;
 }
 
 .buttonIniciar:hover{
-    background-color: rgb(55, 171, 238);
+    background: radial-gradient(rgb(23, 167, 233), rgb(54, 191, 255), rgb(23, 201, 233));
 }

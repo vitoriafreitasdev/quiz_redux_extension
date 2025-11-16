@@ -1,17 +1,24 @@
-
-import { useSelector } from "react-redux"
-import { type RootState } from "../redux/store.ts"
-import Fim from "./Fim"
-import Inicial from "./Inicial"
-import Meio from "./Meio"
+import "./Home.css"
 
 const Home = () => {
-  const stage = useSelector((state: RootState) => state.quiz.gamestages)
+
   return (
-    <div>
-      {stage === "inicial" && <Inicial/>}
-      {stage === "meio" && <Meio/>}
-      {stage === "fim" && <Fim/>}
+    <div className="home-div">
+      <div className="container">
+        <div className="home-conteudo">
+          <div className="home-login">
+              <h3>E-mail: </h3>
+              <input type="email" />
+              <h3>Senha: </h3>
+              <input type="password"/>
+          </div>
+          <div className="cadastrar-btn-div">
+            <button>Cadastrar</button>
+          </div>
+        <div className="home-image"></div>
+
+        </div>
+      </div>
     </div>
   )
 }
