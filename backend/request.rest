@@ -2,8 +2,8 @@ POST http://localhost:3000/cadastro
 Content-Type: application/json
 
 {
-    "name": "vitoria",
-    "email": "v@gmail.com",
+    "name": "manuella",
+    "email": "m@gmail.com",
     "password": "12345",
     "confirmPassword": "12345"
 }
@@ -14,13 +14,13 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "v@gmail.com",
+    "email": "m@gmail.com",
     "password": "12345"
 }
 
 ###
 
-PUT http://localhost:3000/69188d6dcd1693ed3720cfe1/scoreJs
+PUT http://localhost:3000/6919b4db8151faff1662e00a/scoreJs
 Content-Type: application/json
 
 {
@@ -29,9 +29,12 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/69188d6dcd1693ed3720cfe1/scorePy
+GET http://localhost:3000/6919b4db8151faff1662e00a/getUser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTliNGRiODE1MWZhZmYxNjYyZTAwYSIsImlhdCI6MTc2MzI5MzIzNn0.b0Akea2YMWe67rHSejJOljyZNskLO58C-HjBJNafUvA
 Content-Type: application/json
 
-{
-    "score": 60
-}
+###
+
+
+GET http://localhost:3000/getUsers
+Content-Type: application/json

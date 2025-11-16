@@ -123,6 +123,27 @@ const quizController = {
             console.log(error)
             return res.status(422).json({msg: "Erro no sistema, tente novamente."})
         }
+    },
+    getUser: async (req, res) => {
+        try {
+            const id = req.params.id 
+            const user = await User.findById(id)
+            if(!user) return res.status(404).json({msg: "Usuário não encontrado."})
+            return res.status(201).json(user)
+        } catch (error) {
+            console.log(error)
+            return res.status(422).json({msg: "Erro no sistema, tente novamente."})
+        }
+    },
+    getUsers: async (req, res) => {
+        try {
+            const users = await User.find()
+            if(!users) return res.status(404).json({msg: "Usuários não encontrados."})
+            return res.status(201).json(users)
+        } catch (error) {
+            console.log(error)
+            return res.status(422).json({msg: "Erro no sistema, tente novamente."})
+        }
     }
 
 }
