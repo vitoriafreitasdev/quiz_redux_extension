@@ -7,6 +7,7 @@ import Home from './componentes/Home.tsx'
 import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { store } from './redux/store.ts'
+import Cadastrar from './componentes/Cadastrar.tsx'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home/>
+      },
+      {
+        path: "/cadastrar",
+        element: <Cadastrar/>
       }
     ]
   }

@@ -1,5 +1,5 @@
 import "./Cadastrar.css"
-
+// arrumar o css desse aqui ta feio
 const Cadastrar = () => {
   return (
     <div className="cad-div">

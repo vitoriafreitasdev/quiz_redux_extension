@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <div className="home-div">
       <div className="container">
+        <div className="home-image"></div>
         <div className="home-conteudo">
           <div className="home-login">
               <h3>E-mail: </h3>
@@ -15,8 +16,6 @@ const Home = () => {
           <div className="cadastrar-btn-div">
             <button>Cadastrar</button>
           </div>
-        <div className="home-image"></div>
-
         </div>
       </div>
     </div>
