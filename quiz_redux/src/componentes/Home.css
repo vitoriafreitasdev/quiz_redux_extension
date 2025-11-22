@@ -1,5 +1,4 @@
 .home-div{
-    /*background-color:rgb(1, 1, 53);*/
     background: radial-gradient(rgb(7, 7, 138), rgb(12, 12, 122), rgb(1, 1, 53));
     height: 100vh;
 }
@@ -44,31 +43,40 @@
 .home-login h3{
     text-decoration: underline;
 }
-.cadastrar-btn-div {
-   background-color: rgb(31, 101, 167);
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   padding: 1rem;
-   width: 50%;
-   height: 10px;
-   margin: 2rem;
-   border-radius: 1rem;
-   color: #fff;
-}
-
-.cadastrar-btn-div button {
-    width: 50%;
+.loginBtn{
+    display: block;
     margin: 0 auto;
-    border: none;
+    margin-top: 0.3rem;
     padding: 0.2rem;
     cursor: pointer;
-    background-color: rgb(162, 185, 207);
-    color: #fff;
-    font-weight: bolder;
+    border: 2px solid black;
+    background-color: #ffffff;
 }
-.cadastrar-btn-div button:hover{
+.loginBtn:hover{
     text-decoration: underline;
+}
+.buttonCad{
+    background-color: rgb(31, 101, 167);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    width: 50%;
+    height: 10px;
+    margin: 2rem;
+    border-radius: 1rem;
+    font-weight: bolder;
+    cursor: pointer;
+    border: none;
+}
+.linkToCad{
+    text-decoration: none;
+    color: #fff;
+
+}
+.linkToCad:hover{
+    text-decoration: underline;
+
 }
 
 @media (max-width: 580px){

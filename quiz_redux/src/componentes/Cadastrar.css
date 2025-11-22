@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: radial-gradient(rgb(74, 74, 245), rgb(47, 47, 235), rgb(20, 20, 236));
+    background: radial-gradient(rgb(7, 7, 138), rgb(12, 12, 122), rgb(1, 1, 53));
     height: 100vh;
 }
 
 .cad-form{
     margin-top: 12%;
-    background-color: beige;
+    background-color: rgb(235, 235, 226);
     padding: 2rem;
     width: 50%;
     text-align: center;
@@ -30,6 +30,8 @@
     padding: 0.3rem;
     border: none;
     cursor: pointer;
+    background-color: blue;
+    color: #fff;
 }
 
 .cad-submit:hover{
