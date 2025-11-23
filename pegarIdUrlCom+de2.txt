@@ -1,0 +1,5 @@
+<Route path="posts/:id/:secao" element={<Post />} />
+
+// No componente Post:
+const parametros = useParams();
+console.log(parametros.id, parametros.secao)

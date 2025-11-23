@@ -2,11 +2,13 @@ import "./Home.css"
 import { Link } from "react-router-dom"
 import UseLogin from "../hooks/useLogin"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 const Home = () => {
 
   const [email, setEmail] = useState<string>("")
   const [senha, setSenha] = useState<string>("")
-  //const [useId, setUserId] = useState<string | null>(null)
+
+  const navigate = useNavigate()
   const dados = {
       email: email,
       password: senha
@@ -16,8 +18,7 @@ const Home = () => {
   const handleLogin = () => {
     const id = login()
     id.then((data) => {
-      console.log(data)
-      // pegar o id q esta vindo e enviar o usuario para outra rota especifica para ele, vai ser startofgame, mas unico para cada usu, configurar no main.
+      navigate(`/${data}/inicio`)
     })
     
 

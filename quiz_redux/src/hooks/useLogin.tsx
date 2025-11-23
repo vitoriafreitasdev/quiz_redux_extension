@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useState } from "react";
 import quizFetch from "../axios/config";
 

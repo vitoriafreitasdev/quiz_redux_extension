@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { store } from './redux/store.ts'
 import Cadastrar from './componentes/Cadastrar.tsx'
+import StartOfGame from './componentes/StartOfGame.tsx'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
       {
         path: "/cadastrar",
         element: <Cadastrar/>
+      },
+      {
+        path: "/:id/inicio",
+        element: <StartOfGame/>
       }
+
     ]
   }
 ])

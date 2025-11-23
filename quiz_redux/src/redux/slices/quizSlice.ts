@@ -19,6 +19,7 @@ interface answers {
 }
 
 interface inicialState {
+    userId: string,
     gamestages: string
     questions: questions[] | null
     correctAnswer: number
@@ -28,6 +29,7 @@ interface inicialState {
     porcentagemDeAcerto: number
 }
 const inicialState: inicialState = {
+    userId: "",
     gamestages: stages[0],
     questions: null,
     correctAnswer: 0,
@@ -43,13 +45,14 @@ const quizSlice = createSlice({
     initialState: inicialState,
     reducers: {
         startGame: (state, action) => {     
-            if(action.payload === "python"){
+            if(action.payload.quiz === "python"){
                 state.questions = pythonQuest
             } else {
                 state.questions = data
             }
-
+            state.userId = action.payload.id
             state.gamestages = stages[1]
+            
         },
         selectAnswer: (state, action) => {
             
