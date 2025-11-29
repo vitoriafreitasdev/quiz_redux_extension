@@ -49,3 +49,21 @@
 .buttonIniciar:hover{
     background: radial-gradient(rgb(23, 167, 233), rgb(54, 191, 255), rgb(23, 201, 233));
 }
+.dadosDoUsuario h3{
+    margin: 0.7rem;
+    background-color: rgba(128, 128, 128, 0.53);
+    padding: 0.5rem;
+    text-decoration: underline;
+    border-radius: 0.2rem;
+}
+.dadosDoUsuario strong{
+    color: black;
+}
+.dadosDoUsuario .maior{
+    margin: 0.2rem;
+    color: green;
+}
+
+.dadosDoUsuario .atual{
+    color: red;
+}
