@@ -90,15 +90,12 @@ const quizSlice = createSlice({
             const questõesOrdenadas = state.answersSelects.sort((a, b) => a.number - b.number)
             if(state.questions){
                 for(let i = 0; i < state.questions.length; i++){
-                    console.log("Resposta ", state.questions[i].answer)
-                    console.log("A Selecionada ", questõesOrdenadas[i].answer)
                     if(state.questions[i].answer === questõesOrdenadas[i].answer){
                         state.correctAnswer += 1
                     }else if(state.questions[i].answer !== questõesOrdenadas[i].answer){
                         state.wrongAnswer += 1
                     }else{
                         state.message = "Algo deu errado"
-                        console.log("Deu erro")
                     }
                 }
 

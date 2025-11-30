@@ -44,6 +44,7 @@
     color: #fff;
     background: radial-gradient(rgb(23, 201, 233), rgb(54, 191, 255), rgb(23, 167, 233));
     margin: 1rem;
+
 }
 
 .buttonIniciar:hover{
@@ -66,4 +67,10 @@
 
 .dadosDoUsuario .atual{
     color: red;
+}
+
+.buttons-h2Div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

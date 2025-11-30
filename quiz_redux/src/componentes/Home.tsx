@@ -1,8 +1,10 @@
 import "./Home.css"
 import { Link } from "react-router-dom"
-import UseLogin from "../hooks/useLogin"
+
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import UseLogCad from "../hooks/useLogCad"
+
 const Home = () => {
 
   const [email, setEmail] = useState<string>("")
@@ -13,12 +15,12 @@ const Home = () => {
       email: email,
       password: senha
   }
-  const {message, login} = UseLogin("/login", dados)
+  const {message, sendData} = UseLogCad("/login", dados)
 
   const handleLogin = () => {
-    const id = login()
-    id.then((data) => {
-      navigate(`/${data}/inicio`)
+    const data = sendData()
+    data.then((d) => {
+      navigate(`/${d.id}/inicio`)
     })
     
 

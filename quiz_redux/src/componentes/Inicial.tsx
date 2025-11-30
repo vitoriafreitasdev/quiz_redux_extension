@@ -15,7 +15,7 @@ const Inicial = ({ id, user }: InicialProps) => {
   const iniciarJogo = (quizName: string) => {
     dispatch(startGame({ quiz: quizName, id }))
   }
-// terminar o css do dados usuario e dps fazer o cadastro
+
   return (
     <div className="inicial">
       <div className="imagem"></div>
@@ -28,7 +28,7 @@ const Inicial = ({ id, user }: InicialProps) => {
             {user && <p className="maior"><strong>Maior pontuação: </strong> {user.py.maxScore}</p>}
             {user && <p className="atual"><strong>Maior pontuação: </strong> {user.py.score}</p>}
         </div>
-        <div>
+        <div className="buttons-h2Div">
           <h2>Quiz de JavaScript/React | Python</h2>
           <button
             onClick={() => iniciarJogo("javascript")}

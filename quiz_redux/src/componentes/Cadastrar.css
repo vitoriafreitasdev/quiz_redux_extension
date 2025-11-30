@@ -37,3 +37,8 @@
 .cad-submit:hover{
     text-decoration: underline;
 }
+
+.message{
+    margin-top: 1rem;
+    color: #fff;
+}

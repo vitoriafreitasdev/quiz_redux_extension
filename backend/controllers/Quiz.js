@@ -38,8 +38,10 @@ const quizController = {
             }
 
             const creation = await User.create(userAdd)
-
-            res.status(201).json({creation, msg: "Conta criada com sucesso."})
+            const id = creation.id
+            const token = jwt.sign({id: id}, secret)
+            
+            res.status(201).json({creation, token, msg: "Conta criada com sucesso."})
         } catch (error) {
             console.log(error)
             return res.status(422).json({msg: "Erro no sistema, tente novamente."})

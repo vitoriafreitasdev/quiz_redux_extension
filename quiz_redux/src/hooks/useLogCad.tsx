@@ -7,16 +7,25 @@ interface login {
     password: string
 }
 
-
-const UseLogin = (rota: string, dados: login) => {
+interface cad {
+    name: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}
+const UseLogCad = (rota: string, dados: login | cad) => {
     const [message, setMessage] = useState<string | null>(null)
-    const login = async () => {
+
+    const sendData = async () => {
         try {
             const res = await quizFetch.post(rota, dados)
             if(res.status === 201){
-                setMessage("Login feito com sucesso")
+                const token = localStorage.getItem("token")
+                if(token) localStorage.removeItem("token")
+                    
                 localStorage.setItem("token", res.data.token)
-                return res.data.id
+         
+                return res.data
             } else {
                 setMessage(res.data.msg)
             }
@@ -27,7 +36,7 @@ const UseLogin = (rota: string, dados: login) => {
         }
     }
 
-    return {message, login}
+    return {message, sendData}
 }
 
-export default UseLogin
+export default UseLogCad
