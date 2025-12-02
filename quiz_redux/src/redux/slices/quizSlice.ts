@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import data from "../questionsQuiz/questions.ts"
 import pythonQuest from "../questionsPython/questionsPy.ts";
+import quizFetch from "../../axios/config.ts";
 
 const stages: string[] = ["inicial", "meio", "fim"]
 
@@ -27,6 +30,8 @@ interface inicialState {
     answersSelects: answers[] 
     message: string
     porcentagemDeAcerto: number
+    quizName: string
+    users: [] | null
 }
 const inicialState: inicialState = {
     userId: "",
@@ -36,9 +41,28 @@ const inicialState: inicialState = {
     wrongAnswer: 0,
     answersSelects: [],
     message: "",
-    porcentagemDeAcerto: 0
-
+    porcentagemDeAcerto: 0,
+    quizName: "",
+    users: null
 }
+
+// funções assincronas 
+
+interface datas {
+    url: string,
+    uptate: {
+        score: number
+    }
+}
+export const addScore = createAsyncThunk("user/addscore", async (data: datas) => {
+    const res = await quizFetch.put(data.url, data.uptate)
+    return res.data
+})
+
+export const getQuizUsers = createAsyncThunk("quiz/getUsers", async () => {
+    const res = await quizFetch.get("/getUsers")
+    return res.data
+})
 
 const quizSlice = createSlice({
     name: "createSlice",
@@ -47,8 +71,11 @@ const quizSlice = createSlice({
         startGame: (state, action) => {     
             if(action.payload.quiz === "python"){
                 state.questions = pythonQuest
+                state.quizName = "python"
             } else {
                 state.questions = data
+                state.quizName = "js"
+
             }
             state.userId = action.payload.id
             state.gamestages = stages[1]
@@ -101,6 +128,7 @@ const quizSlice = createSlice({
 
                 const acertoPorcetagem = (state.correctAnswer / state.questions.length) * 100
                 state.porcentagemDeAcerto = Math.round(acertoPorcetagem) 
+  
             }
         },
         backToStart: (state) => {
@@ -110,7 +138,42 @@ const quizSlice = createSlice({
             state.message = ""
 
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(addScore.pending, () => {
+                console.log("Carregando...")
+            })
+            .addCase(addScore.fulfilled, (_, action) => {
+                console.log(action.payload)
+            })
+            .addCase(addScore.rejected, () => {
+                console.log("Algo deu errado")
+            })
+            .addCase(getQuizUsers.pending, () => {
+                console.log("Carregando...")
+            })
+            .addCase(getQuizUsers.fulfilled, (state, action) => {
+                const data = action.payload
+               
+                const maiores: number[] = []
+         
+                data.forEach((d: { biggestScore: any; }) => {
+                    console.log(d.biggestScore)
+                    for(let i = 0; i <=5; i++){
+                        if(d.biggestScore > maiores[i]){
+                            maiores[i] = d.biggestScore
+                        }
+                    }
+                });
+                console.log(maiores)
+                // ve se ta corretamente os maiores scores.
+                state.users = action.payload
+            })
+            .addCase(getQuizUsers.rejected, () => {
+                console.log("Algo deu errado")
+            })
+    } 
 
 })
 export const {startGame, selectAnswer, goToEnd, correctingAnswers, backToStart} = quizSlice.actions

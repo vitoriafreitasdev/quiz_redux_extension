@@ -81,6 +81,7 @@ const quizController = {
 
             if(user.javascriptScore.score > user.javascriptScore.maxScore){
                 user.javascriptScore.maxScore = score
+                
             }
 
             if(user.javascriptScore.maxScore > user.biggestScore.score){
@@ -110,6 +111,7 @@ const quizController = {
 
             if(user.pythonScore.score > user.pythonScore.maxScore){
                 user.pythonScore.maxScore = score
+             
             }
 
             if(user.pythonScore.maxScore > user.biggestScore.score){

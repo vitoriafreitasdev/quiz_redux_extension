@@ -60,7 +60,10 @@
     cursor: pointer;
 }
 
-
+.links{
+    text-decoration: none;
+    color: black;
+}
 @media (max-width: 600px){
     .results-container div{
         width: 85%;

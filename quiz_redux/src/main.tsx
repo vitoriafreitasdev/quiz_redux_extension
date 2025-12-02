@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { store } from './redux/store.ts'
 import Cadastrar from './componentes/Cadastrar.tsx'
 import StartOfGame from './componentes/StartOfGame.tsx'
+import UsersScores from './componentes/UsersScores.tsx'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/:id/inicio",
         element: <StartOfGame/>
+      },
+      {
+        path: "/usersScore",
+        element: <UsersScores/>
       }
 
     ]

@@ -1,10 +1,12 @@
 
+
 import "./Meio.css"
 import { useDispatch, useSelector } from "react-redux"
 import { type AppDispatch, type RootState } from "../redux/store.ts"
 import { goToEnd, selectAnswer } from "../redux/slices/quizSlice.ts"
 
 // fazer atualizar o score pelo redux
+
 const Meio = () => {
   const dispatch = useDispatch<AppDispatch>()  
   const questions = useSelector((state: RootState) => state.quiz.questions)

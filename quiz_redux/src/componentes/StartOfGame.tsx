@@ -16,8 +16,8 @@ const StartOfGame = () => {
    return (
     <div>
       {stage === "inicial" && <Inicial id={`${id}`} user={user}/>}
-      {stage === "meio" && <Meio/>}
-      {stage === "fim" && <Fim/>}
+      {stage === "meio" && <Meio />}
+      {stage === "fim" && <Fim id={`${id}`}/>}
     </div>
   )
 }
