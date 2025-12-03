@@ -1,0 +1,24 @@
+.maiores-pontuadores-div{
+    background: radial-gradient( rgb(121, 207, 247), rgb(65, 206, 231), rgb(23, 167, 233));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabela-maiores-pontuadores{
+    border: 1px solid black;
+    margin: 1rem;
+    background-color: black;
+    width: 45%;
+}
+
+.tr-tabela{
+    background-color: #ececec;
+}
+
+.tr-tabela th, td{
+    padding: 0.5rem;
+}
+

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -31,7 +31,7 @@ interface inicialState {
     message: string
     porcentagemDeAcerto: number
     quizName: string
-    users: [] | null
+    usersBiggestScore: maioresData[] | null
 }
 const inicialState: inicialState = {
     userId: "",
@@ -43,7 +43,13 @@ const inicialState: inicialState = {
     message: "",
     porcentagemDeAcerto: 0,
     quizName: "",
-    users: null
+    usersBiggestScore: null
+}
+
+interface maioresData {
+    score: number
+    quizName: string
+    name: string
 }
 
 // funções assincronas 
@@ -156,19 +162,21 @@ const quizSlice = createSlice({
             .addCase(getQuizUsers.fulfilled, (state, action) => {
                 const data = action.payload
                
-                const maiores: number[] = []
-         
-                data.forEach((d: { biggestScore: any; }) => {
-                    console.log(d.biggestScore)
-                    for(let i = 0; i <=5; i++){
-                        if(d.biggestScore > maiores[i]){
-                            maiores[i] = d.biggestScore
-                        }
-                    }
+                const scores:  maioresData[]  = []
+    
+                data.forEach((d: {
+                    [x: string]: string; biggestScore: any; 
+                }) => {
+                    scores.push({score: d.biggestScore.score, quizName: d.biggestScore.quizName, name: d.name})
                 });
-                console.log(maiores)
-                // ve se ta corretamente os maiores scores.
-                state.users = action.payload
+
+                 // Ordenar por score (do maior para o menor)
+                const scoresOrdenados = scores
+                    .filter(item => item.score > 0)
+                    .sort((a, b) => b.score - a.score)
+
+                // Pegar os top N (ex: top 5)
+                state.usersBiggestScore = scoresOrdenados.slice(0, 5)
             })
             .addCase(getQuizUsers.rejected, () => {
                 console.log("Algo deu errado")
