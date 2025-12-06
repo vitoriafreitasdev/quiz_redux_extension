@@ -1,23 +1,28 @@
 
-/* eslint-disable react-hooks/exhaustive-deps */
+
 
 import "./UsersScore.css"
 import { type AppDispatch, type RootState } from "../redux/store.ts"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { getQuizUsers } from "../redux/slices/quizSlice.ts"
-import { Link } from "react-router-dom"
+import { backToStart, getQuizUsers } from "../redux/slices/quizSlice.ts"
+import { useNavigate } from "react-router-dom"
+
 
 
 const UsersScores = () => {
   const dispatch = useDispatch<AppDispatch>()  
   const usersBiggestScore = useSelector((state: RootState) => state.quiz.usersBiggestScore)
-
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getQuizUsers())
   }, [])
 
-  // fazer mais testes para ve se tem algum bug
+  
+  const backHome = () => {
+    dispatch(backToStart())
+    navigate("/")
+  }
   return (
     <div className="maiores-pontuadores-div">
       <h3>Maiores pontuações</h3>
@@ -26,8 +31,8 @@ const UsersScores = () => {
             <thead className="tabela-header">
               <tr className="tr-tabela">
                 <th><strong>Nome do usuário</strong></th>
-                <th><strong>Nome do quiz</strong></th>
                 <th><strong>Pontuação</strong></th>
+                <th><strong>Nome do quiz</strong></th>
               </tr>
             </thead>
           {usersBiggestScore.map((user) => (
@@ -50,8 +55,8 @@ const UsersScores = () => {
       </table>
       }
       
-      <button className="backToHome" >
-        <Link to="/" className="links">Voltar para Home</Link>
+      <button className="backToHome" onClick={backHome} >
+        Voltar para Home
       </button>
     </div>
   )

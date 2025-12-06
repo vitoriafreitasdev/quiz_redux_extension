@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "./Home.css"
 import { Link } from "react-router-dom"
 
@@ -16,11 +17,17 @@ const Home = () => {
       password: senha
   }
   const {message, sendData} = UseLogCad("/login", dados)
+ 
 
   const handleLogin = () => {
     const data = sendData()
+
     data.then((d) => {
-      navigate(`/${d.id}/inicio`)
+  
+      if(d){
+        navigate(`/${d.id}/inicio`)
+      }
+    
     })
     
 
@@ -32,7 +39,7 @@ const Home = () => {
         <div className="home-image"></div>
         <div className="home-conteudo">
           <div className="home-login">
-              {message && <p>{message}</p>}
+              {message && <>{message}</>}
               <h3>E-mail: </h3>
               <input type="email" onChange={(e) => setEmail(e.target.value)}/>
               <h3>Senha: </h3>

@@ -29,10 +29,10 @@ const Cadastrar = () => {
       return
     }
 
-    setMensagem(message)
     const user = sendData()
-    user.then((data) => {
-      navigate(`/${data.creation._id}/inicio`)
+    setMensagem(message)
+    user.then((data) => {   
+      if(data) navigate(`/${data.creation._id}/inicio`)
     })
   }
   return (

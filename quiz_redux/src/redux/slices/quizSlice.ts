@@ -138,10 +138,16 @@ const quizSlice = createSlice({
             }
         },
         backToStart: (state) => {
+            state.userId = ""
             state.gamestages = stages[0]
             state.questions = null
+            state.correctAnswer = 0
+            state.wrongAnswer = 0
             state.answersSelects = []
             state.message = ""
+            state.porcentagemDeAcerto = 0
+            state.quizName = ""
+            state.usersBiggestScore = null
 
         }
     },
@@ -175,7 +181,7 @@ const quizSlice = createSlice({
                     .filter(item => item.score > 0)
                     .sort((a, b) => b.score - a.score)
 
-                // Pegar os top N (ex: top 5)
+                // Pegar os 5 melhores
                 state.usersBiggestScore = scoresOrdenados.slice(0, 5)
             })
             .addCase(getQuizUsers.rejected, () => {
