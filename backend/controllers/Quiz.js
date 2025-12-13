@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require('bcrypt')
 
 require("dotenv").config()
-const secret = process.env.secret
+const secret = process.env.JWT_SECRET
 
 const quizController = {
     register: async (req, res) => {
