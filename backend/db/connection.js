@@ -14,7 +14,7 @@ async function main() {
     try {
         mongoose.set("strictQuery", true)
 
-        await mongoose.connect(dbConn)
+        await mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@cluster0.kquzr1d.mongodb.net/?appName=Cluster0`)
 
         console.log("Conectado ao banco de dados")
     } catch (error) {
