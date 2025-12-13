@@ -3,17 +3,13 @@
 const mongoose = require("mongoose")
 require("dotenv").config()
 
-const dbUser = process.env.dbUser
-const dbPass = process.env.dbPass
-
-
-// tentar fazer a api funcionar nao esta conectando no banco de dados, fala q ouvi um erro no endereço IP
+const MONGODB_URI = process.env.MONGODB_URI
 
 async function main() {
     try {
         mongoose.set("strictQuery", true)
 
-        await mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@cluster0.kquzr1d.mongodb.net/?appName=Cluster0`)
+        await mongoose.connect(MONGODB_URI)
 
         console.log("Conectado ao banco de dados")
     } catch (error) {
