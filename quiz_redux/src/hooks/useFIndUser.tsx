@@ -20,13 +20,17 @@ export const UseFindUser = (id: string | undefined) => {
 
     useEffect(() => {
         async function getUser() {
-            const res = await quizFetch.get(`/${id}/getUser`)
-            const dataUser: userData  = {
-                score: res.data.biggestScore,
-                js: res.data.javascriptScore,
-                py: res.data.pythonScore
+            try {
+                const res = await quizFetch.get(`/${id}/getUser`)
+                const dataUser: userData  = {
+                    score: res.data.biggestScore,
+                    js: res.data.javascriptScore,
+                    py: res.data.pythonScore
+                }
+                setUser(dataUser)
+            } catch (error) {
+                console.log("Erro da requisição do usuário: ", error)
             }
-            setUser(dataUser)
         }
 
         getUser()

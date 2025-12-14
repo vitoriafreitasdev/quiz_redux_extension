@@ -1,7 +1,7 @@
 import axios from "axios"; 
 
 const quizFetch = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: "https://quiz-redux-extension-backend.vercel.app",
     headers: {
         "Content-Type": "application/json"
     }
