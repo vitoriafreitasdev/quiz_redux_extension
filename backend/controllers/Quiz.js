@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require('bcrypt')
 
 require("dotenv").config()
-const JWT_SECRET = process.env.JWT_SECRET
+const secret = process.env.secret
 
 const quizController = {
     register: async (req, res) => {
@@ -39,7 +39,7 @@ const quizController = {
 
             const creation = await User.create(userAdd)
             const id = creation.id
-            const token = jwt.sign({id: id}, JWT_SECRET)
+            const token = jwt.sign({id: id}, secret)
             
             res.status(201).json({creation, token, msg: "Conta criada com sucesso."})
         } catch (error) {
@@ -60,7 +60,7 @@ const quizController = {
             if(!checkingPass) return res.status(422).json({msg: "Senha errada."})
             
             const id = user.id
-            const token = jwt.sign({id: id}, JWT_SECRET)
+            const token = jwt.sign({id: id}, secret)
 
             res.status(201).json({token, id, msg: "Login feito com sucesso."})
         } catch (error) {
