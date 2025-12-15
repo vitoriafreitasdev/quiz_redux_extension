@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { type AppDispatch, type RootState } from "../redux/store.ts"
 import { addScore, backToStart, correctingAnswers } from "../redux/slices/quizSlice.ts"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 interface MeioProps {
   id: string
 }
+
+// fazer testes localmente e na aplicacao do vercel 
 const Fim = ({id}: MeioProps) => {
     const dispatch = useDispatch<AppDispatch>()  
     const correctAnswer = useSelector((state: RootState) => state.quiz.correctAnswer)
@@ -16,6 +18,7 @@ const Fim = ({id}: MeioProps) => {
     const quizName = useSelector((state: RootState) => state.quiz.quizName)
     const [finishCorreting, setFinishCorreting] =  useState<boolean>(false)
 
+   const navigate = useNavigate()
 
    useEffect(() => {
       dispatch(correctingAnswers())
@@ -44,7 +47,7 @@ const Fim = ({id}: MeioProps) => {
 
    const backingToStart = () => {
     dispatch(backToStart())
-    window.location.reload()
+    navigate("/")
    }
   return (
     <div className="results-container">
