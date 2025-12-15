@@ -3,7 +3,7 @@ import "./Fim.css"
 import { useDispatch, useSelector } from "react-redux"
 import { type AppDispatch, type RootState } from "../redux/store.ts"
 import { addScore, backToStart, correctingAnswers } from "../redux/slices/quizSlice.ts"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 interface MeioProps {
   id: string
@@ -14,6 +14,7 @@ const Fim = ({id}: MeioProps) => {
     const wrongAnswer = useSelector((state: RootState) => state.quiz.wrongAnswer)
     const porcetagemAcerto = useSelector((state: RootState) => state.quiz.porcentagemDeAcerto)
     const quizName = useSelector((state: RootState) => state.quiz.quizName)
+    const [finishCorreting, setFinishCorreting] =  useState<boolean>(false)
 
 
    useEffect(() => {
@@ -37,6 +38,7 @@ const Fim = ({id}: MeioProps) => {
         }
       }
       dispatch(addScore(data))
+      setFinishCorreting(true)
 
    }, [correctAnswer])
 
@@ -66,9 +68,10 @@ const Fim = ({id}: MeioProps) => {
         </tbody>
       </table>
 
+      {finishCorreting && 
       <button className="backToHome" onClick={backingToStart}>
         Voltar para o início
-      </button>
+      </button>}
       <button className="backToHome">
         <Link className="links" to="/usersScore">Mostrar as maiores pontuações dos usuários.</Link>
       </button>

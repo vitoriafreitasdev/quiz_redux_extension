@@ -10,7 +10,6 @@ import { UseFindUser, type userData } from "../hooks/useFIndUser.tsx"
 
 const StartOfGame = () => {
   const {id} = useParams<string>()
-  console.log(id)
   const stage = useSelector((state: RootState) => state.quiz.gamestages)
   const user: userData | null = UseFindUser(id)
 
