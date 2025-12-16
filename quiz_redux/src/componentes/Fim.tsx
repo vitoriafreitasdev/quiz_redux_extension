@@ -50,7 +50,6 @@ const Fim = ({id}: MeioProps) => {
    const backingToStart = () => {
     dispatch(backToStart())
     navigate("/")
-   // window.location.reload()
    }
   return (
     <div className="results-container">
