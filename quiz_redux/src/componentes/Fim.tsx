@@ -1,11 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 
 import "./Fim.css"
 import { useDispatch, useSelector } from "react-redux"
 import { type AppDispatch, type RootState } from "../redux/store.ts"
 import { addScore, backToStart, correctingAnswers } from "../redux/slices/quizSlice.ts"
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+//import { useNavigate } from "react-router-dom"
+
 interface MeioProps {
   id: string
 }
@@ -18,7 +20,7 @@ const Fim = ({id}: MeioProps) => {
     const quizName = useSelector((state: RootState) => state.quiz.quizName)
     const [finishCorreting, setFinishCorreting] =  useState<boolean>(false)
 
-   const navigate = useNavigate()
+   //const navigate = useNavigate()
 
    useEffect(() => {
       dispatch(correctingAnswers())
