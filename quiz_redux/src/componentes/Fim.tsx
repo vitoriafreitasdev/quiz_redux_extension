@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import "./Fim.css"
 import { useDispatch, useSelector } from "react-redux"
@@ -47,7 +48,8 @@ const Fim = ({id}: MeioProps) => {
 
    const backingToStart = () => {
     dispatch(backToStart())
-    navigate("/")
+    // navigate("/")
+    window.location.reload()
    }
   return (
     <div className="results-container">
