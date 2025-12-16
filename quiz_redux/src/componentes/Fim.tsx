@@ -10,7 +10,6 @@ interface MeioProps {
   id: string
 }
 
-// fazer testes localmente e na aplicacao do vercel 
 const Fim = ({id}: MeioProps) => {
     const dispatch = useDispatch<AppDispatch>()  
     const correctAnswer = useSelector((state: RootState) => state.quiz.correctAnswer)
