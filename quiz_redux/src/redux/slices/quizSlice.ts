@@ -20,9 +20,12 @@ interface answers {
     question: string
     answer: string
 }
-
+// atualizar os dados do usuario
 interface inicialState {
-    userId: string,
+    userId: string
+    userScoreJS: number | null,
+    userScorepy: number | null,
+    userBiggestOne: number | null,
     gamestages: string
     questions: questions[] | null
     correctAnswer: number
@@ -35,6 +38,9 @@ interface inicialState {
 }
 const inicialState: inicialState = {
     userId: "",
+    userScoreJS: null,
+    userScorepy: null,
+    userBiggestOne: null,
     gamestages: stages[0],
     questions: null,
     correctAnswer: 0,
