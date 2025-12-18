@@ -20,12 +20,18 @@ interface answers {
     question: string
     answer: string
 }
+
+export interface user {
+    js: number
+    jsMax: number
+    py: number
+    pyMax: number
+    useMax: number
+    quizMax: string
+}
 // atualizar os dados do usuario
 interface inicialState {
-    userId: string
-    userScoreJS: number | null,
-    userScorepy: number | null,
-    userBiggestOne: number | null,
+    user: user | null
     gamestages: string
     questions: questions[] | null
     correctAnswer: number
@@ -37,10 +43,7 @@ interface inicialState {
     usersBiggestScore: maioresData[] | null
 }
 const inicialState: inicialState = {
-    userId: "",
-    userScoreJS: null,
-    userScorepy: null,
-    userBiggestOne: null,
+    user: null,
     gamestages: stages[0],
     questions: null,
     correctAnswer: 0,
@@ -80,6 +83,9 @@ const quizSlice = createSlice({
     name: "createSlice",
     initialState: inicialState,
     reducers: {
+        sendUserData: (state, action) => {
+            state.user = action.payload
+        },
         startGame: (state, action) => {     
             if(action.payload.quiz === "python"){
                 state.questions = pythonQuest
@@ -89,13 +95,12 @@ const quizSlice = createSlice({
                 state.quizName = "js"
 
             }
-            state.userId = action.payload.id
+            
             state.gamestages = stages[1]
             
         },
         selectAnswer: (state, action) => {
             
-
             const question: string = action.payload.question
             const answer: string = action.payload.answer
             const number: number = action.payload.number
@@ -144,7 +149,6 @@ const quizSlice = createSlice({
             }
         },
         backToStart: (state) => {
-            state.userId = ""
             state.gamestages = stages[0]
             state.questions = null
             state.correctAnswer = 0
@@ -162,11 +166,20 @@ const quizSlice = createSlice({
             .addCase(addScore.pending, () => {
                 console.log("Carregando...")
             })
-            .addCase(addScore.fulfilled, (_, action) => {
-                console.log(action.payload)
+            .addCase(addScore.fulfilled, (state, action) => {
+           
+                const user = {
+                    js: action.payload.userUptade.javascriptScore.score,
+                    jsMax: action.payload.userUptade.javascriptScore.maxScore,
+                    py: action.payload.userUptade.pythonScore.score,
+                    pyMax: action.payload.userUptade.pythonScore.maxScore,
+                    useMax: action.payload.userUptade.biggestScore.score,
+                    quizMax: action.payload.userUptade.pythonScore.quizName
+                }
+                state.user = user
             })
-            .addCase(addScore.rejected, () => {
-                console.log("Algo deu errado")
+            .addCase(addScore.rejected, (error) => {
+                console.log(error)
             })
             .addCase(getQuizUsers.pending, () => {
                 console.log("Carregando...")
@@ -190,11 +203,11 @@ const quizSlice = createSlice({
                 // Pegar os 5 melhores
                 state.usersBiggestScore = scoresOrdenados.slice(0, 5)
             })
-            .addCase(getQuizUsers.rejected, () => {
-                console.log("Algo deu errado")
+            .addCase(getQuizUsers.rejected, (error) => {
+                console.log(error)
             })
     } 
 
 })
-export const {startGame, selectAnswer, goToEnd, correctingAnswers, backToStart} = quizSlice.actions
+export const {sendUserData, startGame, selectAnswer, goToEnd, correctingAnswers, backToStart} = quizSlice.actions
 export default quizSlice.reducer

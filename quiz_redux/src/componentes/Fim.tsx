@@ -35,7 +35,7 @@ const Fim = ({id}: MeioProps) => {
       else {
         quiz = "js"
       }
-     
+      
       const data = {
         url: `/${id}/${quiz}`,
         uptate: {

@@ -1,23 +1,18 @@
 
 
 import "./Inicial.css"
-import { useDispatch } from "react-redux"
-import { type AppDispatch } from "../redux/store"
+import { useDispatch, useSelector } from "react-redux"
+import { type AppDispatch, type RootState } from "../redux/store"
 import { startGame } from "../redux/slices/quizSlice"
-import type { userData } from "../hooks/useFIndUser"
+import type { user } from "../redux/slices/quizSlice"
 
 
-interface InicialProps {
-  id: string
-  user: userData | null
-}
-
-const Inicial = ({ id, user }: InicialProps) => {
+const Inicial = () => {
   const dispatch = useDispatch<AppDispatch>()
-
-
+  const userData = useSelector<RootState, user | null>((state: RootState) => state.quiz.user)
+  
   const iniciarJogo = (quizName: string) => {
-    dispatch(startGame({ quiz: quizName, id }))
+    dispatch(startGame({ quiz: quizName }))
   }
 
 
@@ -27,11 +22,11 @@ const Inicial = ({ id, user }: InicialProps) => {
       <div className="conteudo">
         <div className="dadosDoUsuario">
             <h3>JavaScript</h3>
-            {user && <p className="maior"><strong>Maior pontuação: </strong>{user.js.maxScore}</p>}
-            {user && <p className="atual"><strong>Pontuação atual: </strong>{user.js.score}</p>}
+            {userData && <p className="maior"><strong>Maior pontuação: </strong>{userData.jsMax}</p>}
+            {userData && <p className="atual"><strong>Pontuação atual: </strong>{userData.js}</p>}
             <h3>Python</h3>
-            {user && <p className="maior"><strong>Maior pontuação: </strong> {user.py.maxScore}</p>}
-            {user && <p className="atual"><strong>Pontuação atual: </strong> {user.py.score}</p>}
+            {userData && <p className="maior"><strong>Maior pontuação: </strong> {userData.pyMax}</p>}
+            {userData && <p className="atual"><strong>Pontuação atual: </strong> {userData.py}</p>}
         </div>
         <div className="buttons-h2Div">
           <h2>Quiz de JavaScript/React | Python</h2>
