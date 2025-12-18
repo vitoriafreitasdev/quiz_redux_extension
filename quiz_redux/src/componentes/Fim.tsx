@@ -45,10 +45,10 @@ const Fim = ({id}: MeioProps) => {
         }
 
         await dispatch(addScore(data))
+        setFinishCorreting(true)
       }
 
       adddingScore()
-      setFinishCorreting(true)
 
 
    }, [correctAnswer])
