@@ -27,24 +27,29 @@ const Fim = ({id}: MeioProps) => {
 
    useEffect(() => {
       
-      const score: number = correctAnswer * 5
-      let quiz = ""
-      if(quizName === "python"){
-        quiz = "python"
-      }
-      else {
-        quiz = "js"
-      }
-      
-      const data = {
-        url: `/${id}/${quiz}`,
-        uptate: {
-          score: score
+      const adddingScore = async () => {
+        const score: number = correctAnswer * 5
+        let quiz = ""
+        if(quizName === "python"){
+          quiz = "python"
         }
+        else {
+          quiz = "js"
+        }
+        
+        const data = {
+          url: `/${id}/${quiz}`,
+          uptate: {
+            score: score
+          }
+        }
+
+        await dispatch(addScore(data))
       }
 
-      dispatch(addScore(data))
+      adddingScore()
       setFinishCorreting(true)
+
 
    }, [correctAnswer])
 
