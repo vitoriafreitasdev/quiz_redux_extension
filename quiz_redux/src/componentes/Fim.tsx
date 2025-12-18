@@ -27,7 +27,8 @@ const Fim = ({id}: MeioProps) => {
 
    useEffect(() => {
       
-      const adddingScore = async () => {
+      try {
+        const adddingScore = async () => {
         const score: number = correctAnswer * 5
         let quiz = ""
         if(quizName === "python"){
@@ -49,6 +50,9 @@ const Fim = ({id}: MeioProps) => {
       }
 
       adddingScore()
+      } catch (error) {
+        console.log("Erro no componenente fim: ", error)
+      }
 
 
    }, [correctAnswer])
@@ -80,12 +84,16 @@ const Fim = ({id}: MeioProps) => {
       </table>
 
       {finishCorreting && 
-      <button className="backToHome" onClick={backingToStart}>
-        Voltar para o início
-      </button>}
-      <button className="backToHome">
-        <Link className="links" to="/usersScore">Mostrar as maiores pontuações dos usuários.</Link>
-      </button>
+      <div>
+        <button className="backToHome" onClick={backingToStart}>
+          Voltar para o início
+        </button>
+        <button className="backToHome">
+          <Link className="links" to="/usersScore">Mostrar as maiores pontuações dos usuários.</Link>
+        </button>
+      </div>
+      }
+      
     </div>
   </div>
 

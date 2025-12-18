@@ -69,6 +69,7 @@ interface datas {
         score: number
     }
 }
+
 export const addScore = createAsyncThunk("user/addscore", async (data: datas) => {
     const res = await quizFetch.put(data.url, data.uptate)
     return res.data

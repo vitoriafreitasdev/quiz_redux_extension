@@ -1,5 +1,6 @@
 import axios from "axios"; 
-
+// https://quiz-redux-extension-backend.vercel.app
+// http://localhost:3000
 const quizFetch = axios.create({
     baseURL: "https://quiz-redux-extension-backend.vercel.app",
     headers: {
