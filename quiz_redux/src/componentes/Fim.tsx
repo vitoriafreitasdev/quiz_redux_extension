@@ -4,7 +4,7 @@ import "./Fim.css"
 import { useDispatch, useSelector } from "react-redux"
 import { type AppDispatch, type RootState } from "../redux/store.ts"
 import { addScore, backToStart, correctingAnswers } from "../redux/slices/quizSlice.ts"
-import { useEffect } from "react"
+import { useEffect, useLayoutEffect } from "react"
 import { Link } from "react-router-dom"
 //import { useNavigate } from "react-router-dom"
 
@@ -22,7 +22,7 @@ const Fim = ({id}: MeioProps) => {
     const quizName = useSelector((state: RootState) => state.quiz.quizName)
    //const navigate = useNavigate()
 
-   useEffect(() => {
+   useLayoutEffect(() => {
       dispatch(correctingAnswers())
    }, [])
 
