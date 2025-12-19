@@ -20,11 +20,11 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/692ef20ac2ce06d29cc1762d/js
+PUT http://localhost:3000/692ef298c2ce06d29cc17633/js
 Content-Type: application/json
 
 {
-    "score": 50
+    "score": 40
 }
 
 ###

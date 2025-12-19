@@ -41,6 +41,9 @@ interface inicialState {
     porcentagemDeAcerto: number
     quizName: string
     usersBiggestScore: maioresData[] | null
+    finishAddingScore: boolean
+    correctingComplete: boolean
+
 }
 const inicialState: inicialState = {
     user: null,
@@ -52,7 +55,10 @@ const inicialState: inicialState = {
     message: "",
     porcentagemDeAcerto: 0,
     quizName: "",
-    usersBiggestScore: null
+    usersBiggestScore: null,
+    finishAddingScore: false,
+    correctingComplete: false
+
 }
 
 interface maioresData {
@@ -98,6 +104,9 @@ const quizSlice = createSlice({
             }
             
             state.gamestages = stages[1]
+            state.finishAddingScore = false
+            state.correctingComplete = false
+
             
         },
         selectAnswer: (state, action) => {
@@ -146,7 +155,7 @@ const quizSlice = createSlice({
 
                 const acertoPorcetagem = (state.correctAnswer / state.questions.length) * 100
                 state.porcentagemDeAcerto = Math.round(acertoPorcetagem) 
-  
+                state.correctingComplete = true
             }
         },
         backToStart: (state) => {
@@ -159,6 +168,8 @@ const quizSlice = createSlice({
             state.porcentagemDeAcerto = 0
             state.quizName = ""
             state.usersBiggestScore = null
+            state.finishAddingScore = false
+            state.correctingComplete = false
 
         }
     },
@@ -168,7 +179,7 @@ const quizSlice = createSlice({
                 console.log("Carregando...")
             })
             .addCase(addScore.fulfilled, (state, action) => {
-           
+                console.log(action.payload)
                 const user = {
                     js: action.payload.userUptade.javascriptScore.score,
                     jsMax: action.payload.userUptade.javascriptScore.maxScore,
@@ -178,6 +189,7 @@ const quizSlice = createSlice({
                     quizMax: action.payload.userUptade.pythonScore.quizName
                 }
                 state.user = user
+                state.finishAddingScore = true
             })
             .addCase(addScore.rejected, (error) => {
                 console.log(error)

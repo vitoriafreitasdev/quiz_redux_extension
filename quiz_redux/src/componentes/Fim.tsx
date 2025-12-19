@@ -4,7 +4,7 @@ import "./Fim.css"
 import { useDispatch, useSelector } from "react-redux"
 import { type AppDispatch, type RootState } from "../redux/store.ts"
 import { addScore, backToStart, correctingAnswers } from "../redux/slices/quizSlice.ts"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 //import { useNavigate } from "react-router-dom"
 
@@ -16,9 +16,10 @@ const Fim = ({id}: MeioProps) => {
     const dispatch = useDispatch<AppDispatch>()  
     const correctAnswer = useSelector((state: RootState) => state.quiz.correctAnswer)
     const wrongAnswer = useSelector((state: RootState) => state.quiz.wrongAnswer)
+    const finishAddingScore = useSelector((state: RootState) => state.quiz.finishAddingScore)
+    const correctingComplete = useSelector((state: RootState) => state.quiz.correctingComplete)
     const porcetagemAcerto = useSelector((state: RootState) => state.quiz.porcentagemDeAcerto)
     const quizName = useSelector((state: RootState) => state.quiz.quizName)
-    const [finishCorreting, setFinishCorreting] =  useState<boolean>(false)
    //const navigate = useNavigate()
 
    useEffect(() => {
@@ -26,7 +27,7 @@ const Fim = ({id}: MeioProps) => {
    }, [])
 
    useEffect(() => {
-      
+    // ver porque as vezes o score fica == 0
       try {
         const adddingScore = async () => {
         const score: number = correctAnswer * 5
@@ -46,7 +47,6 @@ const Fim = ({id}: MeioProps) => {
         }
 
         await dispatch(addScore(data))
-        setFinishCorreting(true)
       }
 
       adddingScore()
@@ -55,7 +55,7 @@ const Fim = ({id}: MeioProps) => {
       }
 
 
-   }, [correctAnswer])
+   }, [correctAnswer, quizName, id, dispatch, correctingComplete])
 
    const backingToStart = () => {
     dispatch(backToStart())
@@ -83,7 +83,7 @@ const Fim = ({id}: MeioProps) => {
         </tbody>
       </table>
 
-      {finishCorreting && 
+      {finishAddingScore && 
       <div>
         <button className="backToHome" onClick={backingToStart}>
           Voltar para o início
