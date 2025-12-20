@@ -21,6 +21,8 @@ const Fim = ({id}: MeioProps) => {
     const quizName = useSelector((state: RootState) => state.quiz.quizName)
 
     // Função para enviar score
+    /*Precisa ser callback, pois sem, a função sendScoreToBackend é recriada a cada renderização. Isso faz com que: O useEffect execute novamente a cada render (porque a referência da função muda. Pode causar loops infinitos. Múltiplos timers são criados */
+
     const sendScoreToBackend = useCallback(async () => {
       if (correctAnswer > 0 && quizName && id) {
         try {
