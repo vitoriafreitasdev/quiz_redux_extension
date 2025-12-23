@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import "./Fim.css"
 import { useDispatch, useSelector } from "react-redux"
@@ -10,13 +9,12 @@ import { Link } from "react-router-dom"
 interface MeioProps {
   id: string
 }
-// ve se atualizo no Vercel
+
 const Fim = ({id}: MeioProps) => {
     const dispatch = useDispatch<AppDispatch>()  
     const correctAnswer = useSelector((state: RootState) => state.quiz.correctAnswer)
     const wrongAnswer = useSelector((state: RootState) => state.quiz.wrongAnswer)
     const finishAddingScore = useSelector((state: RootState) => state.quiz.finishAddingScore)
-    const correctingComplete = useSelector((state: RootState) => state.quiz.correctingComplete)
     const porcetagemAcerto = useSelector((state: RootState) => state.quiz.porcentagemDeAcerto)
     const quizName = useSelector((state: RootState) => state.quiz.quizName)
 
