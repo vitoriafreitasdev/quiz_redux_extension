@@ -10,9 +10,9 @@
 
 .results-container div {
     background-color: rgb(166, 222, 255);
-    width: 50%;
-    height: 30%;
     border-radius: 0.5rem;
+    width: 50%;
+    height: 40%;
     text-align: center;    
     display: flex;
     flex-direction: column;

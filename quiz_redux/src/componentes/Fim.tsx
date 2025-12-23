@@ -59,7 +59,7 @@ const Fim = ({id}: MeioProps) => {
    
    return (
     <div className="results-container">
-      <div>
+      <div className="result-div">
         <h2>Resultados Finais</h2>
         <table>
           <thead>
@@ -79,7 +79,7 @@ const Fim = ({id}: MeioProps) => {
         </table>
 
         {finishAddingScore && 
-        <div>
+        <div className="btns-div">
           <button className="backToHome" onClick={backingToStart}>
             Voltar para o início
           </button>
