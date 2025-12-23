@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 interface MeioProps {
   id: string
 }
-
+// ve se atualizo no Vercel
 const Fim = ({id}: MeioProps) => {
     const dispatch = useDispatch<AppDispatch>()  
     const correctAnswer = useSelector((state: RootState) => state.quiz.correctAnswer)
@@ -50,7 +50,7 @@ const Fim = ({id}: MeioProps) => {
       // Depois de um pequeno delay para garantir que o Redux atualizou
       const timer = setTimeout(() => {
         sendScoreToBackend()
-      }, 100) // 100ms é suficiente para o Redux processar
+      }, 100) 
         
       return () => clearTimeout(timer)
     }, [dispatch, sendScoreToBackend])

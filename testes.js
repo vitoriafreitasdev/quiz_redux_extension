@@ -38,3 +38,15 @@ let teste = {score: {quizName: "", score: 0}, name: ""}
 
 
 */
+
+
+
+const callback = () => {
+  console.log("Ola")
+}
+
+function funcTest(callback){
+  callback()
+}
+
+funcTest(callback)
