@@ -29,6 +29,31 @@ const Cadastrar = () => {
       return
     }
 
+    if (dadosDoUsuario.name.length == 0) {
+      setMensagem("Preencha todos os campos")
+      return
+    }
+    if (dadosDoUsuario.email.length == 0) {
+      setMensagem("Preencha todos os campos")
+      return
+    }
+    if (dadosDoUsuario.password.length == 0) {
+      setMensagem("Preencha todos os campos")
+      return
+    }
+    if (dadosDoUsuario.confirmPassword.length == 0) {
+      setMensagem("Preencha todos os campos")
+      return
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailIsValid = emailRegex.test(email);
+
+    if(!emailIsValid) {
+      setMensagem("E-mail inválido")
+      return
+    }
+
     const user = sendData()
     setMensagem(message)
     user.then((data) => {   

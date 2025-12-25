@@ -78,7 +78,7 @@ const Fim = ({id}: MeioProps) => {
           </tbody>
         </table>
 
-        {finishAddingScore && 
+        {finishAddingScore ?
         <div className="btns-div">
           <button className="backToHome" onClick={backingToStart}>
             Voltar para o início
@@ -86,7 +86,7 @@ const Fim = ({id}: MeioProps) => {
           <button className="backToHome">
             <Link className="links" to="/usersScore">Mostrar as maiores pontuações dos usuários.</Link>
           </button>
-        </div>
+        </div> : <div><p>Carregando...</p></div>
         }
       </div>
     </div>
