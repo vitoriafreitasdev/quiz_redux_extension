@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import "./Home.css"
 import { Link } from "react-router-dom"
 
@@ -10,6 +10,7 @@ const Home = () => {
 
   const [email, setEmail] = useState<string>("")
   const [senha, setSenha] = useState<string>("")
+  const [mensagem, setMensagem] = useState<string | null>(null)
 
   const navigate = useNavigate()
   const dados = {
@@ -21,16 +22,14 @@ const Home = () => {
 
   const handleLogin = () => {
     const data = sendData()
-
+    setMensagem("Carregando...")
     data.then((d) => {
-  
       if(d){
         navigate(`/${d.id}/inicio`)
       }
     
     })
-    
-
+    setMensagem(null)
   }
  
   return (
@@ -40,6 +39,7 @@ const Home = () => {
         <div className="home-conteudo">
           <div className="home-login">
               {message && <>{message}</>}
+              {mensagem && <>{mensagem}</>}
               <h3>E-mail: </h3>
               <input type="email" onChange={(e) => setEmail(e.target.value)}/>
               <h3>Senha: </h3>

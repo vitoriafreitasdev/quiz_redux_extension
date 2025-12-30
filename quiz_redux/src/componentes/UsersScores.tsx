@@ -9,10 +9,9 @@ import { backToStart, getQuizUsers } from "../redux/slices/quizSlice.ts"
 import { useNavigate } from "react-router-dom"
 
 
-// verificar como fica a mensagem na tela, qualquer coisa arruma no css
+
 /*
-Proximos passos:
-fazer aparecer mensagens para o usuario caso ocorra um erro. Mensagem para senhas diferente ou email errado. E mensagens caso ocorra erro no sistema, por exemplo erros no servidor.
+mensagens caso ocorra erro no sistema, por exemplo erros no servidor.
 */ 
 
 

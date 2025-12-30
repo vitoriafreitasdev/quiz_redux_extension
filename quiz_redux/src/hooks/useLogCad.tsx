@@ -34,7 +34,12 @@ const UseLogCad = (rota: string, dados: login | cad) => {
             } 
         } catch (error: any) {
             console.log(error)
-            setMessage(error.response.data.msg)
+            if(error.response.data.msg) {
+                setMessage(error.response.data.msg)
+            } else {
+                setMessage("Ocorreu um erro no sistema, tente novamente mais tarde.")
+            }
+
         }
         
     }
