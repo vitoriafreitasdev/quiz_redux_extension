@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./Cadastrar.css"
 import UseLogCad from "../hooks/useLogCad"
 import { useNavigate } from "react-router-dom"
@@ -13,17 +13,31 @@ const Cadastrar = () => {
   const [senha, setSenha] = useState<string>("")
   const [confirmarSenha, setConfirmarSenha] = useState<string>("")
   const [mensagem, setMensagem] = useState<string | null>(null) 
+
   const dadosDoUsuario = {
     name: nome,
     email: email,
     password: senha,
     confirmPassword: confirmarSenha
   }
+  const {setMessage, message, sendData} = UseLogCad("/cadastro", dadosDoUsuario)
 
-  const {message, sendData} = UseLogCad("/cadastro", dadosDoUsuario)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMensagem(null)
+    }, 1500)
+  }, [mensagem])
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage(null)
+    }, 1500)
+  }, [message, setMessage])
   
   const cadastrar = (e: { preventDefault: () => void }) => {
     e.preventDefault()
+    setMensagem(null)
     if(dadosDoUsuario.password != dadosDoUsuario.confirmPassword){
       setMensagem("Senhas diferentes")
       return
@@ -55,14 +69,16 @@ const Cadastrar = () => {
     }
 
     const user = sendData()
-    setMensagem(message)
     user.then((data) => {   
       if(data) navigate(`/${data.creation._id}/inicio`)
     })
+
+
   }
   return (
     <div className="cad-div">
       {mensagem && <p className="message">{mensagem}</p>}
+      {message && <p className="message">{message}</p>}
       <form className="cad-form">
         <div className="form-div">
           <p>Nome: </p>

@@ -2,7 +2,7 @@
 import "./Home.css"
 import { Link } from "react-router-dom"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import UseLogCad from "../hooks/useLogCad"
 
@@ -11,14 +11,25 @@ const Home = () => {
   const [email, setEmail] = useState<string>("")
   const [senha, setSenha] = useState<string>("")
   const [mensagem, setMensagem] = useState<string | null>(null)
-
-  const navigate = useNavigate()
   const dados = {
       email: email,
       password: senha
   }
-  const {message, sendData} = UseLogCad("/login", dados)
- 
+  const {setMessage, message, sendData} = UseLogCad("/login", dados)
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMensagem(null)
+    }, 1500)
+  }, [mensagem])
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage(null)
+    }, 1500)
+  }, [message, setMessage])
 
   const handleLogin = () => {
     const data = sendData()

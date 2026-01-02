@@ -22,6 +22,8 @@ const UseLogCad = (rota: string, dados: login | cad) => {
     const sendData = async () => {
         
         try {
+            setMessage(null)
+
             const res = await quizFetch.post(rota, dados)
 
             if(res.status === 201){
@@ -44,7 +46,7 @@ const UseLogCad = (rota: string, dados: login | cad) => {
         
     }
 
-    return {message, sendData}
+    return {setMessage, message, sendData}
 }
 
 export default UseLogCad
